@@ -11,8 +11,9 @@ Console.WriteLine("valor de b:"+b);
 Console.WriteLine("Ingrese un numero");
 string entrada = Console.ReadLine();
 int numero;
+bool resultado = int.TryParse(entrada, out numero);
 
-if (int.TryParse(entrada, out numero)){                             //verifico si es un numero entero
+if (resultado){                                                 //verifico si es un numero entero
     Console.WriteLine("Es un numero valido.");
 
     if (numero > 0){
@@ -32,4 +33,67 @@ if (int.TryParse(entrada, out numero)){                             //verifico s
 }
 else{
     Console.WriteLine("La entrada no es un número válido.");
+}
+
+//Ejercicio 2
+bool continuar = true;
+
+while (continuar)
+{
+    Console.WriteLine("\n--- Calculadora Basica ---");
+    Console.Write("Seleccione una opcion (1-4): ");
+    Console.WriteLine("1. Sumar");
+    Console.WriteLine("2. Restar");
+    Console.WriteLine("3. Multiplicar");
+    Console.WriteLine("4. Dividir");
+    string opcion = Console.ReadLine();
+
+    Console.Write("Ingrese el primer numero: ");
+    string entrada1 = Console.ReadLine();
+    int numero1;
+    bool resultado1 = int.TryParse(entrada1, out numero1);
+
+    Console.Write("Ingrese el segundo numero: ");
+    string entrada2 = Console.ReadLine();
+    int numero2;
+    bool resultado2 = int.TryParse(entrada2, out numero2);
+
+    double resultadoC1 = 0;
+    bool valido = true;
+
+    switch (opcion)
+    {
+        case "1":
+            resultadoC1 = numero1 + numero2;
+            break;
+        case "2":
+            resultadoC1 = numero1 - numero2;
+            break;
+        case "3":
+            resultadoC1 = numero1 * numero2;
+            break;
+        case "4":
+            if (numero2 != 0) {
+                resultadoC1 = numero1 / numero2;
+            } else {
+                Console.WriteLine("No se puede dividir por cero.");
+            }
+            break;
+        default:
+            Console.WriteLine("Opción inválida.");
+            valido = false;
+            break;
+    }
+
+    if (valido){
+        Console.WriteLine("Resultado: " + resultadoC1);
+    }
+
+    Console.Write("¿Desea realizar otra operacion?\nSI[1]\nNO[0] ");
+    string siOno = Console.ReadLine();
+    if (siOno == "1"){
+        continuar = true;
+    } else {
+        continuar = false;
+    }
 }
