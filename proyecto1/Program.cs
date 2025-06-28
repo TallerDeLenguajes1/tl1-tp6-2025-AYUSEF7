@@ -112,10 +112,12 @@ if (float.TryParse(entrada1, out numero3)){
 
     Console.WriteLine($"Valor absoluto: {Math.Abs(numero3)}");                      //valor absoluto
     Console.WriteLine($"Cuadrado: {Math.Pow(numero3, 2)}");                         //potencia al cuadrado
+
     if (numero3 >= 0)                                                               //raiz cuadrada
         Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(numero3)}");
     else
         Console.WriteLine("Raíz cuadrada: No definida para negativos");
+        
     Console.WriteLine($"Seno: {Math.Sin(numero3)}");                                //seno
     Console.WriteLine($"Coseno: {Math.Cos(numero3)}");                              //coseno
     Console.WriteLine($"Parte entera (truncate): {Math.Truncate(numero3)}");        //La parte entera de un tipo float.
