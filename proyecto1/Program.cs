@@ -35,7 +35,9 @@ else{
     Console.WriteLine("La entrada no es un número válido.");
 }
 
+
 //Ejercicio 2
+
 bool continuar = true;
 
 while (continuar)
@@ -49,14 +51,14 @@ while (continuar)
     string opcion = Console.ReadLine();
 
     Console.Write("Ingrese el primer numero: ");
-    string entrada1 = Console.ReadLine();
+    string e1 = Console.ReadLine();
     int numero1;
-    bool resultado1 = int.TryParse(entrada1, out numero1);
+    bool resultado1 = int.TryParse(e1, out numero1);
 
     Console.Write("Ingrese el segundo numero: ");
-    string entrada2 = Console.ReadLine();
+    string e2 = Console.ReadLine();
     int numero2;
-    bool resultado2 = int.TryParse(entrada2, out numero2);
+    bool resultado2 = int.TryParse(e2, out numero2);
 
     double resultadoC1 = 0;
     bool valido = true;
@@ -73,7 +75,7 @@ while (continuar)
             resultadoC1 = numero1 * numero2;
             break;
         case "4":
-            if (numero2 != 0) {
+            if (numero2 != 0){
                 resultadoC1 = numero1 / numero2;
             } else {
                 Console.WriteLine("No se puede dividir por cero.");
@@ -85,7 +87,8 @@ while (continuar)
             break;
     }
 
-    if (valido){
+    if (valido)
+    {
         Console.WriteLine("Resultado: " + resultadoC1);
     }
 
@@ -96,4 +99,46 @@ while (continuar)
     } else {
         continuar = false;
     }
+}
+
+//Ejercicio 3
+
+Console.WriteLine("Ingrese un número: ");
+string entrada1 = Console.ReadLine();
+float numero3;
+
+if (float.TryParse(entrada1, out numero3)){
+    Console.WriteLine("\n--- Operaciones Matemáticas ---");
+
+    Console.WriteLine($"Valor absoluto: {Math.Abs(numero3)}");                      //valor absoluto
+    Console.WriteLine($"Cuadrado: {Math.Pow(numero3, 2)}");                         //potencia al cuadrado
+    if (numero3 >= 0)                                                               //raiz cuadrada
+        Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(numero3)}");
+    else
+        Console.WriteLine("Raíz cuadrada: No definida para negativos");
+    Console.WriteLine($"Seno: {Math.Sin(numero3)}");                                //seno
+    Console.WriteLine($"Coseno: {Math.Cos(numero3)}");                              //coseno
+    Console.WriteLine($"Parte entera (truncate): {Math.Truncate(numero3)}");        //La parte entera de un tipo float.
+    
+} else {
+    Console.WriteLine("No ingresó un número válido.");
+    return;
+}
+
+Console.WriteLine("\nIngrese el primer número: ");
+string entrada2 = Console.ReadLine();
+float n1;
+
+Console.WriteLine("Ingrese el segundo número: ");
+string entrada3 = Console.ReadLine();
+float n2;
+
+
+if (float.TryParse(entrada2, out n1) && float.TryParse(entrada3, out n2)){          //control de que los 2 sean digitos
+    Console.WriteLine("\n--- Comparación ---");
+
+    Console.WriteLine($"Máximo: {Math.Max(n1, n2)}");
+    Console.WriteLine($"Mínimo: {Math.Min(n1, n2)}");
+} else {
+    Console.WriteLine("Uno o ambos valores no son válidos.");
 }
