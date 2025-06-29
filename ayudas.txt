@@ -1,0 +1,58 @@
+✅ GUÍA RÁPIDA DE MÉTODOS DE STRING EN C#
+
+🔁 Conversor de tipo: ToString()
+Convierte un valor (como número, fecha, etc.) a texto.
+
+int edad = 25;
+string texto = edad.ToString();  // "25"
+---------------------------------------------------------------------------
+🧾 Comparación: Compare(), CompareTo(), ==, !=
+
+-. == y !=
+string a = "hola";
+string b = "Hola";
+bool iguales = a == b; // false (sensible a mayúsculas)
+
+-. Compare() → devuelve -1, 0 o 1
+int resultado = string.Compare("abc", "ABC", true);  // 0 (ignora mayúsculas)
+
+-. CompareTo()
+int r = "abc".CompareTo("abc"); // 0 si iguales
+----------------------------------------------------------------------------
+🔠 Mayúsculas / Minúsculas: ToUpper() y ToLower()
+
+string original = "Hola Mundo";
+Console.WriteLine(original.ToUpper());  // "HOLA MUNDO"
+Console.WriteLine(original.ToLower());  // "hola mundo"
+----------------------------------------------------------------------------
+🔍 Acceso y manipulación: Substring(), Replace(), Split(), Trim()
+
+-. Substring(int startIndex, int length)
+string texto = "Programación";
+string sub = texto.Substring(0, 5);  // "Progr"
+
+-. Replace(old, new)
+string frase = "hola mundo";
+string nueva = frase.Replace("hola", "chau");  // "chau mundo"
+
+-. Split(separator)
+string nombres = "Ana,Juan,Luis";
+string[] partes = nombres.Split(',');  // ["Ana", "Juan", "Luis"]
+
+-. Trim() Quita espacios en los extremos.
+string nombre = "  Juan  ";
+Console.WriteLine(nombre.Trim());  // "Juan"
+----------------------------------------------------------------------------
+🔎 Búsqueda y condición: IndexOf(), LastIndexOf(), StartsWith(), EndsWith()
+
+string palabra = "computadora";
+
+-. IndexOf() Devuelve el índice donde aparece un texto.
+int pos = palabra.IndexOf("t");  // 5
+
+-. LastIndexOf() Última aparición.
+int ultima = palabra.LastIndexOf("o");  // 8
+
+-. StartsWith() y EndsWith() Verifican si empieza o termina con un texto específico.
+bool empieza = palabra.StartsWith("com");  // true
+bool termina = palabra.EndsWith("ora");    // true

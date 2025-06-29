@@ -11,9 +11,8 @@ Console.WriteLine("valor de b:"+b);
 Console.WriteLine("Ingrese un numero");
 string entrada = Console.ReadLine();
 int numero;
-bool resultado = int.TryParse(entrada, out numero);
 
-if (resultado){                                                 //verifico si es un numero entero
+if (int.TryParse(entrada, out numero)){                             //verifico si es un numero entero
     Console.WriteLine("Es un numero valido.");
 
     if (numero > 0){
@@ -34,7 +33,6 @@ if (resultado){                                                 //verifico si es
 else{
     Console.WriteLine("La entrada no es un número válido.");
 }
-
 
 //Ejercicio 2
 
@@ -113,10 +111,11 @@ if (float.TryParse(entrada1, out numero3)){
     Console.WriteLine($"Valor absoluto: {Math.Abs(numero3)}");                      //valor absoluto
     Console.WriteLine($"Cuadrado: {Math.Pow(numero3, 2)}");                         //potencia al cuadrado
 
-    if (numero3 >= 0)                                                               //raiz cuadrada
+    if (numero3 >= 0){                                                              //raiz cuadrada
         Console.WriteLine($"Raíz cuadrada: {Math.Sqrt(numero3)}");
-    else
+    } else {
         Console.WriteLine("Raíz cuadrada: No definida para negativos");
+    }
         
     Console.WriteLine($"Seno: {Math.Sin(numero3)}");                                //seno
     Console.WriteLine($"Coseno: {Math.Cos(numero3)}");                              //coseno
@@ -143,4 +142,111 @@ if (float.TryParse(entrada2, out n1) && float.TryParse(entrada3, out n2)){      
     Console.WriteLine($"Mínimo: {Math.Min(n1, n2)}");
 } else {
     Console.WriteLine("Uno o ambos valores no son válidos.");
+}
+
+//Ejercicio 4
+
+//Ingreso de la cadena original
+Console.WriteLine("Ingrese una cadena de texto: ");
+string cadena1 = Console.ReadLine();
+
+//Mostrar longitud
+Console.WriteLine($"Longitud de la cadena: {cadena1.Length}");
+
+//Concatenar con otra cadena
+Console.WriteLine("Ingrese una segunda cadena para concatenar: ");
+string cadena2 = Console.ReadLine();
+
+string concatenada = cadena1 + " " + cadena2;
+Console.WriteLine("Cadenas concatenadas: " + concatenada);
+
+//Extraer subcadena
+if (cadena1.Length >= 3){
+    string subcadena = cadena1.Substring(0, 3);                                     // Extrae los primeros 3 caracteres(posicion 0,1,2)
+    Console.WriteLine("Subcadena (primeros 3 caracteres): " + subcadena);
+} else {
+    Console.WriteLine("La cadena es muy corta para extraer una subcadena de 5 caracteres.");
+}
+
+//Operación matemática y resultado en texto
+Console.WriteLine("Ingrese el primer número: ");
+string ingreso1 = Console.ReadLine();
+Console.WriteLine("Ingrese el segundo número: ");
+string ingreso2 = Console.ReadLine();
+
+int num1, num2;
+if (int.TryParse(ingreso1, out num1) && int.TryParse(ingreso2, out num2))
+{
+    int suma = num1 + num2;
+    Console.WriteLine("La suma de " + num1.ToString() + " y de " + num2.ToString() + " es igual a: " + suma.ToString());
+}
+else
+{
+    Console.WriteLine("Error: uno de los valores ingresados no es un número válido.");
+}
+
+//Recorrer la cadena con foreach
+Console.WriteLine("Caracteres de la primera cadena:");
+foreach (char caracter in cadena1){
+    Console.WriteLine(caracter);
+}
+
+//Buscar una palabra dentro de la cadena
+Console.WriteLine("Ingrese una palabra a buscar en la primera cadena: ");
+string palabra = Console.ReadLine();
+if (cadena1.Contains(palabra)){
+    Console.WriteLine($"La palabra \"{palabra}\" fue encontrada en la cadena.");
+} else {
+    Console.WriteLine($"La palabra \"{palabra}\" NO fue encontrada.");
+}
+
+//Convertir a mayúsculas y minúsculas
+Console.WriteLine("En mayusculas: " + cadena1.ToUpper());
+Console.WriteLine("En minusculas: " + cadena1.ToLower());
+
+//Separar con Split()
+Console.WriteLine("Ingrese una cadena separada por comas (,): ");
+string cadenaConSeparador = Console.ReadLine();
+
+string[] partes = cadenaConSeparador.Split(',');
+Console.WriteLine("Elementos separados:");
+foreach (string parte in partes){
+    Console.WriteLine(parte);
+}
+
+//Resolver ecuación simple tipo "582+2"
+Console.WriteLine("Ingrese una ecuación simple (por ejemplo 582+2): ");
+string ecuacion = Console.ReadLine();
+
+int nro1, nro2;
+
+if (ecuacion.Contains("+")){
+    string[] elementos = ecuacion.Split('+');
+    if (int.TryParse(elementos[0], out nro1) && int.TryParse(elementos[1], out nro2)){
+        Console.WriteLine($"Resultado de la suma: {nro1 + nro2}");
+    }
+}
+else if (ecuacion.Contains("-")){
+    string[] elementos = ecuacion.Split('-');
+    if (int.TryParse(elementos[0], out nro1) && int.TryParse(elementos[1], out nro2)){
+        Console.WriteLine($"Resultado de la resta: {nro1 - nro2}");
+    }
+}
+else if (ecuacion.Contains("*")){
+    string[] elementos = ecuacion.Split('*');
+    if (int.TryParse(elementos[0], out nro1) && int.TryParse(elementos[1], out nro2)){
+        Console.WriteLine($"Resultado de la multiplicación: {nro1 * nro2}");
+    }
+}
+else if (ecuacion.Contains("/")){
+    string[] elementos = ecuacion.Split('/');
+    if (int.TryParse(elementos[0], out nro1) && int.TryParse(elementos[1], out nro2)){
+        if (nro2 != 0) {
+            Console.WriteLine($"Resultado de la división: {(double)nro1 / nro2}");
+        } else {
+            Console.WriteLine("Error: no se puede dividir por cero.");
+        }
+    }
+} else {
+    Console.WriteLine("No se reconoció ningún operador válido (+, -, *, /).");
 }
